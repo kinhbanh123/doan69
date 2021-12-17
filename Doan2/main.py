@@ -21,7 +21,7 @@ class ip():
         canhanList[i].email = input("hãy nhập email ")
         print(canhanList[i].outputInfo())
     def OutputCanhan(i):
-        ff = open('./Doan2/_DataB/canhan.txt','a+')
+        ff = open('./Doan2/_DataB/canhan.txt','a+', encoding='utf-8')
         ff.write(canhanList[i].hoten)
         ff.write("\n")
         ff.write(str(canhanList[i].macanhan))
@@ -47,7 +47,7 @@ class ip():
         sinhvienList[i].diachi = input("hãy nhập dia chi ")
         print(sinhvienList[i].masinhvien)
     def OutputSinhvien(i):
-        ff = open('./Doan2/_DataB/sinhvien.txt','a+')
+        ff = open('./Doan2/_DataB/sinhvien.txt','a+', encoding='utf-8')
         ff.write(canhanList[i].hoten)
         ff.write("\n")
         ff.write(str(canhanList[i].macanhan))
@@ -80,7 +80,7 @@ class ip():
         giaovienList[i].gioitinh = input("hãy nhập gioi tinh ") 
         giaovienList[i].diachi = input("hãy nhập dia chi ")
     def OutputGiaovien(i):
-        ff = open('./Doan2/_DataB/giaovien.txt','a+')
+        ff = open('./Doan2/_DataB/giaovien.txt','a+', encoding='utf-8')
         ff.write(canhanList[i].hoten)
         ff.write("\n")
         ff.write(str(canhanList[i].macanhan))
@@ -176,7 +176,7 @@ def docdata():
 if __name__ == '__main__':
     tuychon = "open"
     ii = 0
-    ee = open("./Doan2/_DataB/i.txt",'r+')
+    ee = open("./Doan2/_DataB/i.txt",'r+', encoding='utf-8')
     i = int(ee.readline())
     docdata 
     while tuychon != "close":
