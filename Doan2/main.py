@@ -21,7 +21,7 @@ class ip():
         canhanList[i].email = input("hãy nhập email ")
         print(canhanList[i].outputInfo())
     def OutputCanhan(i):
-        ff = open('./Doan2/_DataB/canhan.txt','a+', encoding='utf-8')
+        ff = open('./doan69/Doan2/_DataB/canhan.txt','a+', encoding='utf-8')
         ff.write(canhanList[i].hoten)
         ff.write("\n")
         ff.write(str(canhanList[i].macanhan))
@@ -47,7 +47,7 @@ class ip():
         sinhvienList[i].diachi = input("hãy nhập dia chi ")
         print(sinhvienList[i].masinhvien)
     def OutputSinhvien(i):
-        ff = open('./Doan2/_DataB/sinhvien.txt','a+', encoding='utf-8')
+        ff = open('./doan69/Doan2/_DataB/sinhvien.txt','a+', encoding='utf-8')
         ff.write(str(canhanList[i].macanhan))
         ff.write("\n")
         ff.write(canhanList[i].hoten)
@@ -80,7 +80,7 @@ class ip():
         giaovienList[i].gioitinh = input("hãy nhập gioi tinh ") 
         giaovienList[i].diachi = input("hãy nhập dia chi ")
     def OutputGiaovien(i):
-        ff = open('./Doan2/_DataB/giaovien.txt','a+', encoding='utf-8')
+        ff = open('./doan69/Doan2/_DataB/giaovien.txt','a+', encoding='utf-8')
         ff.write(str(canhanList[i].macanhan))
         ff.write("\n")
         ff.write(canhanList[i].hoten)
@@ -117,12 +117,7 @@ class ip():
         diemList[i].diemtbc = (int(diemList[i].diemthilan1) + int(diemList[i].diemthilan2) + int(diemList[i].hocky)*3)/5
 
 
-canhanList = [Canhan() for i in range (0,1000)]
-sinhvienList =[Sinhvien() for i in range (0,1000)]
-giaovienList = [Giaovien() for i in range (0,1000)]
-khoahocList = [Khoahoc() for i in range (0,1000)]
-nganhdaotaoList = [Nganhdaotao() for i in range (0,1000)]
-diemList = [Diem() for i in range (0,1000)]
+
 
 
 class quanlysv():
@@ -141,7 +136,7 @@ class quanlysv():
         f.write("\n")
         f.write(sinhvienList[i].outputInfo())
     def docdata():
-        ff = open("./Doan2/_DataB/sinhvien.txt",'r+')
+        ff = open("./doan69/Doan2/_DataB/sinhvien.txt",'r+')
         check ="text"
         luot = 1
         while check != "":
@@ -188,14 +183,20 @@ class quanlygv():
         f.write(giaovienList[i].outputInfo())
 
  ################################################################## Main ################################################
+canhanList = [Canhan() for i in range (0,1000)]
+sinhvienList =[Sinhvien() for i in range (0,1000)]
+giaovienList = [Giaovien() for i in range (0,1000)]
+khoahocList = [Khoahoc() for i in range (0,1000)]
+nganhdaotaoList = [Nganhdaotao() for i in range (0,1000)]
+diemList = [Diem() for i in range (0,1000)]
 if __name__ == '__main__':
     tuychon = "open"
     ii = 0
-    ee = open("./Doan2/_DataB/i.txt",'r+', encoding='utf-8')
+    ee = open("./doan69/Doan2/_DataB/i.txt",'r+', encoding='utf-8')
     i = int(ee.readline())
     ee.close()
-    quanlysv.docdata
-    '''while tuychon != "close":
+    quanlysv.docdata()
+    while tuychon != "close":
         print("Bạn muốn thực hiện gì (Nhấn 0 để tắt)")
         print("1 để nhập tên sinh viên ")
         print("2 để nhập tên giáo viên ")
@@ -234,7 +235,7 @@ if __name__ == '__main__':
         if ttcheck == 7:
             print(canhanList[1].hoten)
         
-    ee = open("./Doan2/_DataB/i.txt",'w+', encoding='utf-8')
+    ee = open("./doan69/Doan2/_DataB/i.txt",'w+', encoding='utf-8')
     ee.write(str(i))
-    ee.close()'''
+    ee.close()
     quanlysv.findsinhvien()
