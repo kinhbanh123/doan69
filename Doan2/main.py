@@ -135,14 +135,14 @@ class quanlysv():
         f.write(canhanList[i].outputInfo())
         f.write("\n")
         f.write(sinhvienList[i].outputInfo())
-    def docdata():
-        ff = open("./doan69/Doan2/_DataB/sinhvien.txt",'r+')
+    def docdatasv():
+        ff = open("./doan69/Doan2/_DataB/sinhvien.txt",'r+', encoding='utf-8')
         check ="text"
         luot = 1
         while check != "":
             if luot == 2:
-                ii = ff.readline()
-                canhanList[ii].hoten = check
+                ii = int(check)
+                canhanList[ii].hoten = ff.readline()
                 canhanList[ii].macanhan = ii
                 canhanList[ii].sdt = ff.readline()
                 canhanList[ii].quequan = ff.readline()
@@ -153,7 +153,7 @@ class quanlysv():
                 sinhvienList[ii].diachi = ff.readline()
                 check = ff.readline()
             else:
-                ii = ff.readline()
+                ii = int(ff.readline())
                 canhanList[ii].hoten = ff.readline()
                 canhanList[ii].macanhan = ii
                 canhanList[ii].sdt = ff.readline()
@@ -181,6 +181,36 @@ class quanlygv():
         f.write(canhanList[i].outputInfo())
         f.write("\n")
         f.write(giaovienList[i].outputInfo())
+    def docdatagv():
+        ff = open("./doan69/Doan2/_DataB/sinhvien.txt",'r+', encoding='utf-8')
+        check ="text"
+        luot = 1
+        while check != "":
+            if luot == 2:
+                ii = int(check)
+                canhanList[ii].hoten = ff.readline()
+                canhanList[ii].macanhan = ii
+                canhanList[ii].sdt = ff.readline()
+                canhanList[ii].quequan = ff.readline()
+                canhanList[ii].email = ff.readline()
+                giaovienList[ii].masinhvien = ff.readline()
+                giaovienList[ii].ngaysinh = ff.readline()
+                giaovienList[ii].gioitinh = ff.readline()
+                giaovienList[ii].diachi = ff.readline()
+                check = ff.readline()
+            else:
+                ii = int(ff.readline())
+                canhanList[ii].hoten = ff.readline()
+                canhanList[ii].macanhan = ii
+                canhanList[ii].sdt = ff.readline()
+                canhanList[ii].quequan = ff.readline()
+                canhanList[ii].email = ff.readline()
+                giaovienList[ii].masinhvien = ff.readline()
+                giaovienList[ii].ngaysinh = ff.readline()
+                giaovienList[ii].gioitinh = ff.readline()
+                giaovienList[ii].diachi = ff.readline()
+                check = ff.readline()
+                luot = luot + 1
 
  ################################################################## Main ################################################
 canhanList = [Canhan() for i in range (0,1000)]
@@ -193,9 +223,8 @@ if __name__ == '__main__':
     tuychon = "open"
     ii = 0
     ee = open("./doan69/Doan2/_DataB/i.txt",'r+', encoding='utf-8')
-    i = int(ee.readline())
+    so = int(ee.readline())
     ee.close()
-    quanlysv.docdata()
     while tuychon != "close":
         print("Bạn muốn thực hiện gì (Nhấn 0 để tắt)")
         print("1 để nhập tên sinh viên ")
@@ -207,21 +236,21 @@ if __name__ == '__main__':
         ttcheck = int(input())
         if ttcheck == 0:
             tuychon = "close"
-        if ttcheck == 1:
-            ip.InputSinhvien(i)
-            i = i+1
-        if ttcheck == 2:
-            ip.InputGiaovien(i)
-            i = i+1
-        if ttcheck == 3 :
-            ip.InputKhoahoc(i)
-        if ttcheck == 4:
-            ip.InputNganhdaotao(i)
-        if ttcheck ==5:
+        elif ttcheck == 1:
+            ip.InputSinhvien(so)
+            so = so+1
+        elif ttcheck == 2:
+            ip.InputGiaovien(so)
+            so = so+1
+        elif ttcheck == 3 :
+            ip.InputKhoahoc(so)
+        elif ttcheck == 4:
+            ip.InputNganhdaotao(so)
+        elif ttcheck ==5:
             print("hãy nhập mã sinh viên để nhập điểm")
             mas = int(input())
             ip.InputDiem(mas)
-        if ttcheck ==6:
+        elif ttcheck ==6:
             print("1 de sinh vien 2 de giao vien ")
             ttcheck2 =int(input())
             if ttcheck2 == 1:
@@ -232,10 +261,15 @@ if __name__ == '__main__':
                 for o in range(len(giaovienList)):
                     if giaovienList[o].magiaovien != "":
                         ip.OutputGiaovien(o)
-        if ttcheck == 7:
+        elif ttcheck == 7:
             print(canhanList[1].hoten)
+        elif ttcheck == 8:
+            quanlysv.docdatasv()
+            quanlygv.docdatagv()
+        else:
+            print("hãy nhập lại nào")
         
     ee = open("./doan69/Doan2/_DataB/i.txt",'w+', encoding='utf-8')
-    ee.write(str(i))
+    ee.write(str(so))
     ee.close()
     quanlysv.findsinhvien()
