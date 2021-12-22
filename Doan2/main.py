@@ -4,7 +4,7 @@ from _Class.Data.Canhan import Canhan
 from _Class.Data.Sinhvien import Sinhvien
 from _Class.Data.Giaovien import Giaovien
 from _Class.Data.Khoahoc import Khoahoc
-
+from _Class.Data.Monhoc import Monhoc
 from _Class.Data.Diem import Diem
 from _Class.Data.Nganhdaotao import Nganhdaotao
 from _Class.Data.Hedaotao import Hedaotao
@@ -103,19 +103,47 @@ class ip():
     def InputKhoahoc(i):
         khoahocList[i].makhoahoc = i 
         khoahocList[i].tenkhoahoc = input("hãy nhập ten khoa hoc ")
-
+    def OutputKhoahoc(i):
+        ff = open('./doan69/Doan2/_DataB/khoahoc.txt','a+', encoding='utf-8')
+        ff.write(str(khoahocList[i].makhoahoc))
+        ff.write("\n")
+        ff.write(khoahocList[i].tenkhoahoc)
+        ff.write("\n")
+        ff.close
 
     def InputNganhdaotao(i):
         nganhdaotaoList[i].manganh = i
         nganhdaotaoList[i].tennganh = input("hãy nhập ten nganh ")
-
+    def OutputNganhdaotao(i):
+        ff = open('./doan69/Doan2/_DataB/nganhdaotao.txt','a+', encoding='utf-8')
+        ff.write(str(nganhdaotaoList[i].manganh))
+        ff.write("\n")
+        ff.write(nganhdaotaoList[i].tennganh)
+        ff.write("\n")
+        ff.close
     def InputDiem(i):
         diemList[i].diemtb = input("hãy nhập diem tb ")
         diemList[i].diemthilan1 = input(" hãy nhập diem thi lan thu 1 ")
         diemList[i].diemthilan2 = input(" hãy nhập diem thi lan thu 2 ")
         diemList[i].hocky = input("hãy nhập diem hoc ky ")
         diemList[i].diemtbc = (int(diemList[i].diemthilan1) + int(diemList[i].diemthilan2) + int(diemList[i].hocky)*3)/5
-
+    def OutputDiem(i):
+        ff = open('./doan69/Doan2/_DataB/diem.txt','a+', encoding='utf-8')
+        ff.write(canhanList[i].macanhan)
+        ff.write("\n")
+        ff.write(canhanList[i].hoten)
+        ff.write("\n")
+        ff.write(diemList[i].diemtb)
+        ff.write("\n")
+        ff.write(diemList[i].diemthilan1)
+        ff.write("\n")
+        ff.write(diemList[i].diemthilan2)
+        ff.write("\n")
+        ff.write(diemList[i].hocky)
+        ff.write("\n")
+        ff.write(str(diemList[i].diemtbc))
+        ff.write("\n")
+        ff.close
 
 
 
@@ -219,6 +247,7 @@ giaovienList = [Giaovien() for i in range (0,1000)]
 khoahocList = [Khoahoc() for i in range (0,1000)]
 nganhdaotaoList = [Nganhdaotao() for i in range (0,1000)]
 diemList = [Diem() for i in range (0,1000)]
+monhocList = [Monhoc() for i in range(0,1000)]
 if __name__ == '__main__':
     tuychon = "open"
     ii = 0
@@ -233,6 +262,8 @@ if __name__ == '__main__':
         print("4 để nhập ngành đào tạo ")
         print("5 để nhập điểm ")
         print("6 để lưu dữ liệu ")
+        print("7 để tìm sinh viên ")
+        print("8 để load dữ liệu")
         ttcheck = int(input())
         if ttcheck == 0:
             tuychon = "close"
@@ -244,14 +275,18 @@ if __name__ == '__main__':
             so = so+1
         elif ttcheck == 3 :
             ip.InputKhoahoc(so)
+            so = so+1
         elif ttcheck == 4:
             ip.InputNganhdaotao(so)
+            so = so+1
         elif ttcheck ==5:
             print("hãy nhập mã sinh viên để nhập điểm")
             mas = int(input())
+            print("nhap diem cho sinh vien ")
+            print(canhanList[mas].hoten)
             ip.InputDiem(mas)
         elif ttcheck ==6:
-            print("1 de sinh vien 2 de giao vien ")
+            print("1: sinh viên \n 2: giáo viên \n 3: khoá học \n 4: ngành đào tạo \n 5: điểm ")
             ttcheck2 =int(input())
             if ttcheck2 == 1:
                 for o in range(len(sinhvienList)):
@@ -261,15 +296,31 @@ if __name__ == '__main__':
                 for o in range(len(giaovienList)):
                     if giaovienList[o].magiaovien != "":
                         ip.OutputGiaovien(o)
+            if ttcheck ==3:
+                for o in range(len(khoahocList)):
+                    if khoahocList[o].makhoahoc != "":
+                        ip.OutputKhoahoc(o)
+            if ttcheck ==4: 
+                for o in range(len(nganhdaotaoList)):
+                    if nganhdaotaoList[o].manganh != "":
+                        ip.OutputNganhdaotao(o)
+            if ttcheck ==5:
+                for o in range(len(diemList)):
+                    if diemList[o].diemtb != "":
+                        ip.OutputDiem(o)
+        
         elif ttcheck == 7:
-            print(canhanList[1].hoten)
+            print("hãy nhập mã số của học sinh để tìm ")
+            quanlysv.findsinhvien()
         elif ttcheck == 8:
+            print("load thông tin ")
             quanlysv.docdatasv()
             quanlygv.docdatagv()
+
         else:
             print("hãy nhập lại nào")
         
     ee = open("./doan69/Doan2/_DataB/i.txt",'w+', encoding='utf-8')
     ee.write(str(so))
     ee.close()
-    quanlysv.findsinhvien()
+    

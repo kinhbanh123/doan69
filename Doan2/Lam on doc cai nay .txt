@@ -1,0 +1,5 @@
+Plz press 0 when u wanna close this file
+if u alt f4 or do something like that, for sure will be error
+the way to fix it is delete all file in _datab and create new file i.txt
+open i.txt and write 0
+ty
